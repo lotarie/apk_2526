@@ -1,0 +1,40 @@
+\section{Zadání}
+Nad polygonovou mapou implementuje Ray Crossing Algorithm pro geometrické vyhledávání incidujícího polygonu obsahujícího zadaný bod $q$.
+\newline
+Nalezený polygon graficky zvýrazněte vhodným způsobem (např. vyplněním, šrafováním, blikáním).
+Grafické rozhraní vytvořte s využitím frameworku QT. 
+\newline
+Pro generování nekonvexních polygonů můžete navrhnout vlastní algoritmus či použít existující geografická data (např. mapa evropských států).
+\newline
+Polygony budou načítány z textového souboru ve Vámi zvoleném formátu.
+Pro datovou reprezentaci jednotlivých polygonů použijte špagetový model.
+
+
+\noindent
+\begin{tabularx}{\textwidth}{|X|c|}
+    \hline
+    \textbf{Krok} & \textbf{Hodnocení} \\
+    \hline\hline
+    Detekce polohy bodu rozlišující stavy uvnitř, vně polygonu. \cellcolor[HTML]{94F29E}& 10b \\
+    \hline
+    \textit{Analýza polohy bodu (uvnitř/vně) metodou Winding Number Algorithm.\cellcolor[HTML]{94F29E}} & \textit{+10b} \\
+    \hline
+    \textit{Ošetření singulárního případu u Winding Number Algorithm: bod leží na hraně polygonu.\cellcolor[HTML]{94F29E}} & \textit{+5b} \\
+    \hline
+    \textit{Ošetření singulárního případu u Ray Crossing Algorithm: bod leží na hraně polygonu.} & \textit{+5b} \\
+    \hline
+    \textit{Ošetření singulárního případu u obou algoritmů: bod je totožný s vrcholem jednoho či více polygonů.*\cellcolor[HTML]{FEFF8A}} & \textit{+2b} \\
+    \hline
+    \textit{Zvýraznění všech polygonů pro oba výše uvedené singulární případy.} & \textit{+3b} \\
+    \hline
+    \textit{Rychlé vyhledání potenciálních polygonů (bod uvnitř min-max boxu).\cellcolor[HTML]{94F29E}} & \textit{+10b} \\
+    \hline
+    \textit{Řešení pro polygony s dírami.\cellcolor[HTML]{94F29E}} & \textit{+10b} \\
+    \hline
+    \textit{Načtení vstupních dat ze *.shp.\cellcolor[HTML]{94F29E}} & \textit{+10b} \\
+    \hline
+    \textbf{Max celkem:} & \textbf{65b} \\
+    \hline
+\end{tabularx}
+
+\textit{*ošetřeno jen u Winding Number}

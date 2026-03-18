@@ -1,0 +1,115 @@
+\documentclass[12pt,a4paper]{article}
+
+%%%%%
+% Template for writing a Thesis in Faculty of Science, Charles University. 
+% It is not necessary to change this page. 
+% Automatically exports to PDF type A-2u. (Do not include PDF that are not PDF A-2u)
+
+
+
+%%% Packages %%%
+% For Text and PDF management
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage[pdfa,unicode]{hyperref}
+\hypersetup{hidelinks}
+\usepackage[a-2u]{pdfx}
+\emergencystretch=1em 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tabularx} 
+\usepackage{booktabs}
+% For Tables and Figures management
+\usepackage{graphicx}
+\usepackage{caption} 
+\captionsetup[table]{skip=10pt}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tablefootnote}
+\usepackage{pdfpages}
+\usepackage[table]{xcolor}
+% Chemistry and math notations
+\usepackage[version=4]{mhchem}
+\usepackage{amsmath} 
+% Others
+\usepackage{lipsum}
+\usepackage{datetime}
+\newdateformat{mydate}{\THEDAY. \THEMONTH. \THEYEAR}
+%%%
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color[HTML]{EDEBEB},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\addto\captionsczech{
+  \renewcommand{\lstlistingname}{Kód}
+  \renewcommand{\lstlistlistingname}{Seznam kódů}
+}
+
+
+
+%%% Setting up the PDF %%%
+% Spacing between paragraphs
+\setlength{\parskip}{10pt}
+% Indentation size
+\setlength{\parindent}{15pt}
+% Margins
+\usepackage[a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm]{geometry}
+%%%
+
+% Setting up the Bibliography
+\usepackage[sort&compress,numbers,super]{natbib}
+\bibliographystyle{achemso}
+
+% Begin document
+\begin{document}
+  
+\setstretch{1.5}
+\include{title}
+\include{zadani}
+\include{vypracovani}
+\include{zdroje}
+\include{5_results}
+
+
+\setstretch{1}
+
+
+%%% Attachments - uncomment (delete %) these 4 lines if you have attachments
+
+%\clearpage
+%\pagenumbering{arabic}
+%\addcontentsline{toc}{section}{Attachments}
+%\include{attachements}
+
+%%%
+
+
+\end{document}
