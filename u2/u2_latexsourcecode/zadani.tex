@@ -1,0 +1,41 @@
+\section{Zadání}
+Ze souboru načtěte vstupní data představovaná lomovými body budov a proveďte generaliazci budov do úrovně detailu LOD0. Testování proveďte nad třemi datovými sadami - historické centrum města, sídliště, izolovaná zástavba.
+\newline
+Pro každou budovu určete její hlavní směry metodami: 
+\begin{itemize}
+    \item Minimum Area Enclosing Rectangle
+    \item PCA
+\end{itemize}
+
+
+U první metody použijte některý z algoritmů pro konstrukci konvexní obálky. Budovu při generalizaci do úrovně LOD0 nahraďte obdelníkem orientovaným v obou hlavních směrech, se středem v těžišti budovy, jeho plocha bude stejná jako plocha budovy. Výsledky generalizace vhodně vizualizujte.
+
+
+Otestujte a porovnejte efektivitu obou metod s využitím hodnotících kritérií. Pokuste se rozhodnout, pro které tvary budov dávají metody nevhodné výsledky, a pro které naopak poskytují vhodnou aproximaci.
+
+
+\noindent
+\begin{tabularx}{\textwidth}{|X|c|}
+    \hline
+    \textbf{Krok} & \textbf{Hodnocení} \\
+    \hline\hline
+    {Generalizace budov metodami Minimum Area Enclosing Rectangle a PCA.} \cellcolor[HTML]{94F29E} & 15b \\
+    \hline
+    \textit{Generalizace budov metodou Longest Edge.} \cellcolor[HTML]{94F29E} & \textit{+5b} \\
+    \hline
+    \textit{Generalizace budov metodou Wall Average.} \cellcolor[HTML]{94F29E} & \textit{+8b} \\
+    \hline
+    \textit{Generalizace budov metodou Weighted Bisector.} \cellcolor[HTML]{94F29E} & \textit{+10b} \\
+    \hline
+    \textit{Implementace další metody konstrukce konvexní obálky.} \cellcolor[HTML]{94F29E} & \textit{+5b} \\
+    \hline
+    \textit{Ošetření singulárních případů při generování konvexní obálky.} \cellcolor[HTML]{94F29E} & \textit{+2b} \\
+    \hline
+  
+    \hline
+    \textit{Načtení vstupních dat ze *.shp.} \cellcolor[HTML]{94F29E} & \textit{+10b} \\
+    \hline
+    \textbf{Max celkem:} & \textbf{55b} \\
+    \hline
+\end{tabularx}
+
