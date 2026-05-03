@@ -1,0 +1,14 @@
+<RCC>
+  <qresource>
+    <file>images/icons/clear.png</file>
+    <file>images/icons/clear_all.png</file>
+    <file>images/icons/contours2.png</file>
+    <file>images/icons/exit.png</file>
+    <file>images/icons/open_file.png</file>
+    <file>images/icons/orientation2.png</file>
+    <file>images/icons/save.png</file>
+    <file>images/icons/settings.png</file>
+    <file>images/icons/slope2.png</file>
+    <file>images/icons/triangles2.png</file>
+  </qresource>
+</RCC>

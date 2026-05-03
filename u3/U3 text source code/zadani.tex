@@ -1,0 +1,56 @@
+\section{Zadání}
+\textbf{Vstup:} množina $P = \{p_1, \dots, p_n\}$, $p_i = \{x_i, y_i, z_i\}$.
+
+\textbf{Výstup:} polyedrický DMT nad množinou $P$ představovaný vrstevnicemi doplněný vizualizací sklonu trojúhelníků a jejich expozic.
+
+\vspace{0.5em}
+
+Metodou inkrementální konstrukce vytvořte nad množinou $P$ vstupních bodů 2D Delaunay triangulaci. Jako vstupní data použijte existující geodetická data (alespoň 300 bodů) popř. navrhněte algoritmus pro generování syntetických vstupních dat představujících významné terénní tvary (kupa, údolí, spočinek, hřbet, \dots).
+
+Vstupní množiny bodů včetně níže uvedených výstupů vhodně vizualizujte. Grafické rozhraní realizujte s využitím frameworku Qt. Dynamické datové struktury implementujte s využitím STL.
+
+\vspace{0.5em}
+
+Nad takto vzniklou triangulací vygenerujte polyedrický digitální model terénu. Dále proveďte tyto analýzy:
+
+\begin{itemize}
+    \item S využitím lineární interpolace vygenerujte vrstevnice se zadaným krokem a v zadaném intervalu, proveďte jejich vizualizaci s rozlišením zvýrazněných vrstevnic.
+    
+    \item Analyzujte sklon digitálního modelu terénu, jednotlivé trojúhelníky vizualizujte v závislosti na jejich sklonu.
+    
+    \item Analyzujte expozici digitálního modelu terénu, jednotlivé trojúhelníky vizualizujte v závislosti na jejich expozici ke světové straně.
+\end{itemize}
+
+Zhodnoťte výsledný digitální model terénu z kartografického hlediska, zamyslete se nad slabinami algoritmu založeného na 2D Delaunay triangulaci. Ve kterých situacích (různé terénní tvary) nebude dávat vhodné výsledky? Tyto situace graficky znázorněte.
+
+
+\noindent
+\begin{tabularx}{\textwidth}{|X|c|}
+    \hline
+    \textbf{Krok} & \textbf{Hodnocení} \\
+    \hline\hline
+    {Delaunay triangulace, polyedrický model terénu.} \cellcolor[HTML]{94F29E} & 10b \\
+    \hline
+    \textit{Konstrukce vrstevnic, analýza sklonu a expozice.} \cellcolor[HTML]{94F29E} & \textit{10b} \\
+    \hline
+    \textit{Triangulace nekonvexní oblasti zadané polygonem. } \cellcolor[HTML]{FFFFFF} & \textit{+5b} \\
+    \hline
+    \textit{Výběr barevných stupnic při vizualizaci sklonu a expozice.} \cellcolor[HTML]{FFFFFF} & \textit{+3b} \\
+    \hline
+    \textit{Automatický popis vrstevnic.} \cellcolor[HTML]{FFFFFF} & \textit{+3b} \\
+    \hline
+    \textit{Automatický popis vrstevnic respektující kartografické zásady (orientace, vhodné rozložení). } \cellcolor[HTML]{FFFFFF} & \textit{+10b} \\
+    \hline
+    \hline
+    \textit{Algoritmus pro automatické generování terénních tvarů (kupa, údolí, spočinek, hřbet, ...).} \cellcolor[HTML]{FFFFFF} & \textit{+10b} \\
+    \hline
+    \hline
+    \textit{3D vizualizace terénu s využitím promítání.} \cellcolor[HTML]{FFFFFF} & \textit{+10b} \\
+    \hline
+    \hline
+    \textit{Barevná hypsometrie} \cellcolor[HTML]{FFFFFF} & \textit{+5b} \\
+    \hline
+    \textbf{Max celkem:} & \textbf{65b} \\
+    \hline
+\end{tabularx}
+
