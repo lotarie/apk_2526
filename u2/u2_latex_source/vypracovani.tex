@@ -372,10 +372,81 @@ Při testování na reálných datech (zástavba historického centra, moderní 
 
 \begin{itemize}
     \item \textbf{MAER / MBR} poskytuje vizuálně velmi stabilní obdélníky. Z principu své konstrukce však může u budov ve tvaru písmene "L", "U", nebo u diagonálně orientovaných bloků generovat neúměrně široké a zkreslené výsledky, které vizuálně nerespektují hmotu budovy.
+    \begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ Izolovaná zástavba & Sídliště & Historické centrum  \\
+ \hline
+208/218 & 105/106  &  143/163 \\
+\hline
+ 95,4 \% & 99,1\%  & 87,7\%  \\
+ \hline
+\end{tabular}
+    \caption{Výsledky pro MAER / MBR.}
+\label{table:MBR}
+\end{table}
+
     \item \textbf{PCA} je výpočetně velmi rychlá metoda, která se hodí především na protáhlé liniové budovy a sídlištní zástavbu. Ukázala se však jako náchylná na drobné a asymetrické výstupky z jinak pravoúhlého půdorysu, které dokážou hlavní osu nechtěně vychýlit.
+        \begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ Izolovaná zástavba & Sídliště & Historické centrum  \\
+ \hline
+88/218 & 73/106  &  64/163 \\
+\hline
+ 40,4 \% & 68,9\%  & 39,3\%  \\
+ \hline
+\end{tabular}
+    \caption{Výsledky pro PCA.}
+\end{table}
+
     \item \textbf{Longest Edge} funguje spolehlivě u jednoduché izolované zástavby bez složitých detailů. Výrazně ale selhává u složitějších tvarů (např. historická zástavba), kde náhodná nejdelší kompaktní stěna nemusí vůbec reprezentovat reálnou orientaci celé budovy.
+        \begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ Izolovaná zástavba & Sídliště & Historické centrum  \\
+ \hline
+213/218 & 106/106  &  144/163 \\
+\hline
+ 97,7 \% & 100\%  & 88,3\%  \\
+ \hline
+\end{tabular}
+    \caption{Výsledky pro Longest Edge.}
+\end{table}
+
     \item \textbf{Wall Average} se ukázal jako mimořádně robustní algoritmus pro  budovy tvořené velkým množstvím malých, na sebe kolmých stěn. Tím, že průměruje směry s využitím vah (délek), eliminuje chyby, které u takových budov dělá metoda Longest Edge.
+        \begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ Izolovaná zástavba & Sídliště & Historické centrum  \\
+ \hline
+213/218 & 106/106  &  146/163 \\
+\hline
+ 97,7 \% & 100\%  & 89,6\%  \\
+ \hline
+\end{tabular}
+    \caption{Výsledky pro Wall Average.}
+\label{table:MBR}
+\end{table}
     \item \textbf{Weighted Bisector} poskytuje výborné výsledky při aproximaci složitých tvarů, kde selhávají metody založené výhradně na analýze vnějších obvodových stěn. Protože analyzuje vnitřní strukturu budovy (úhlopříčky), dokáže dobře zachytit její celkový tvarový a težištní trend.
+        \begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+ Izolovaná zástavba & Sídliště & Historické centrum  \\
+ \hline
+113/218 & 74/106  &  59/163 \\
+\hline
+ 51,8 \% & 69,8\%  & 36,2\%  \\
+ \hline
+\end{tabular}
+    \caption{Výsledky pro Weighted Bisector.}
+\label{table:MBR}
+\end{table}
 \end{itemize}
 
 Na závěr můžeme uvést, že aplikace splnila všechny zadané požadavky a představuje plně funkční a rozšířitelný nástroj pro automatizovanou plošnou generalizaci. \textbf {Grafická ukázka výsledků jednotlivých metod je vyobrazena v příloze tohoto dokumentu}
