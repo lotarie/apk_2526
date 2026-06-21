@@ -185,14 +185,34 @@ class Ui_MainWindow(object):
             #Get DT
             DT = self.Canvas.getDT()
         
-        #Input data
-        z_min = 200
-        z_max = 600
-        dz = 20
+        #Get points from canvas for dynamic range calculation
+        points = self.Canvas.getPoints()
+        
+        #Protect against empty data
+        if not points:
+            QtWidgets.QMessageBox.warning(self.centralwidget, "Error", "No data loaded for contour line calculation.")
+            return
 
-        #Create contour lines
-        a = Algorithms()
-        contours = a.createContourLines(DT,z_min,z_max, dz)
+        #Dynamic calculation of z_min and z_max based on the loaded points, to provide user with relevant information for contour line step selection
+        z_values = [p.z() for p in points]
+        z_min = int(min(z_values))
+        z_max = int(max(z_values))
+
+        #Pop up dialog for user to input contour line step (dz), with dynamic information about the range of z values in the data. Consulted and partially developed with AI
+        dz, ok = QtWidgets.QInputDialog.getInt(
+            self.centralwidget, 
+            "Contour Line Step", 
+            f"Input contour line step (dz) in meters\n(Detected elevation range is {z_min} m to {z_max} m):", 
+            10,    # Initial value in the field (e.g., 10 meters)
+            1,     # Minimum allowed step value
+            1000,  # Maximum allowed step value
+            1      # Step size when clicking the arrows
+        )
+
+        #Canculation if everything is inputed correctly
+        if ok and dz > 0:
+            a = Algorithms()
+            contours = a.createContourLines(DT, z_min, z_max, dz)
 
         #Set results
         self.Canvas.setContours(contours)
@@ -210,7 +230,7 @@ class Ui_MainWindow(object):
             
         try:
             points = []
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r', encoding='utf-8') as file:
                 for line in file:
                     #Split line into coordinates and convert to float
                     coords = line.strip().split()
@@ -223,8 +243,38 @@ class Ui_MainWindow(object):
             if points:
                 #Clear old data and set new data
                 self.Canvas.clearAll()
+                #Bounding box for data out of the screen resolution for afinne transformation (logic based on stack overflow: https://stackoverflow.com/questions/1752901/affine-transformation)
+                min_x = min(p.x() for p in points)
+                max_x = max(p.x() for p in points)
+                min_y = min(p.y() for p in points)
+                max_y = max(p.y() for p in points)
+                
+                dx = max_x - min_x
+                dy = max_y - min_y
+                
+                #Set of canvas resolution with 50 point margin
+                margin = 50
+                canvas_w = self.Canvas.width() - 2 * margin
+                canvas_h = self.Canvas.height() - 2 * margin
+                
+                #Scale calculation to fit data into canvas while maintaining aspect ratio
+                scale = min(canvas_w / dx, canvas_h / dy) if dx > 0 and dy > 0 else 1.0
+                
+                #Calculation of the centroid of the canvas for centering the data
+                center_x = min_x + dx / 2
+                center_y = min_y + dy / 2
+                canvas_center_x = self.Canvas.width() / 2
+                canvas_center_y = self.Canvas.height() / 2
+                
+                #Transformation and adding points to canvas
                 for p in points:
-                    self.Canvas.getPoints().append(p)
+                    x_canvas = canvas_center_x + (p.x() - center_x) * scale
+                    y_canvas = canvas_center_y - (p.y() - center_y) * scale
+                    
+                    #Z value is not transformed, only x and y for visualization, z is used for analysis
+                    transformed_point = QPoint3DF(x_canvas, y_canvas, p.z())
+                    self.Canvas.getPoints().append(transformed_point)
+                    
                 self.Canvas.repaint()
         except Exception as e:
             print(f"Error opening file: {e}")
